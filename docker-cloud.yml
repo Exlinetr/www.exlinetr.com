@@ -17,9 +17,6 @@ services:
         - "traefik.http.services.www_exlinetr_com_ui.loadbalancer.server.scheme=http"
     networks:
       - traefik_network
-    ports:
-      - 1000:80
-
 
 networks:
   traefik_network:
