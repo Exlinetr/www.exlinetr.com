@@ -15,7 +15,7 @@ docker_stack_deployment_pipeline {
             name:"registery.exlinetr.com/exlinetr.com:2.0.0"
         ],
         stack:[
-            composefile:'docker/docker-cloud.yml',
+            composefile:'docker-cloud.yml',
             clusters:[
                 svayp_cluster:[
                     address:'tcp://docker-cluster-master-01.exlinetr.com:2376',
