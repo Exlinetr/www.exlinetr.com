@@ -1,12 +1,17 @@
-version: "3.4"
-
+version: "3.7"
 services:
   ui:
-    image: furkaandogan/exlinetr.com:1.0.0
+    image: registery.exlinetr.com/exlinetr.com:2.0.0
     deploy:
-      replicas: 2
+      mode: replicated
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
       restart_policy:
         condition: on-failure
+        max_attempts: 0
+        delay: 5s
       labels:
         - "traefik.enable=true"
         - "traefik.docker.network=traefik_network"
@@ -16,8 +21,10 @@ services:
         - "traefik.http.services.www_exlinetr_com_ui.loadbalancer.server.port=80"
         - "traefik.http.services.www_exlinetr_com_ui.loadbalancer.server.scheme=http"
     networks:
+      - exlinetr-com-uı-net
       - traefik_network
 
 networks:
+  exlinetr-com-uı-net:
   traefik_network:
     external: true

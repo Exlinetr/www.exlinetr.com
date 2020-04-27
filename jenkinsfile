@@ -1,0 +1,27 @@
+@Library("gallifrey") _
+
+docker_stack_deployment_pipeline {
+    application=[
+        name:'www.exlinetr.com',
+        version:'1.0'
+    ]
+    jenkins=[
+        agent:[
+            label:'exlinetr-docker-slave'
+        ]
+    ]
+    docker=[
+        image:[
+            name:"registery.exlinetr.com/exlinetr.com:2.0.0"
+        ],
+        stack:[
+            composefile:'docker/docker-cloud.yml',
+            clusters:[
+                svayp_cluster:[
+                    address:'tcp://docker-cluster-master-01.exlinetr.com:2376',
+                    credentialId:'docker-master-01'
+                ]
+            ]
+        ]
+    ]
+}
