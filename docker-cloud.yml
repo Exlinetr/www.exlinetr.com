@@ -21,10 +21,11 @@ services:
         - "traefik.http.services.www_exlinetr_com_ui.loadbalancer.server.port=80"
         - "traefik.http.services.www_exlinetr_com_ui.loadbalancer.server.scheme=http"
     networks:
-      - exlinetr-com-uı-net
+      - exlinetr-com-ui-net
       - traefik_network
 
 networks:
-  exlinetr-com-uı-net:
+  exlinetr-com-ui-net:
+    name: "exlinetr-com-ui-net"
   traefik_network:
     external: true
